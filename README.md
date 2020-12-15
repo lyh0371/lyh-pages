@@ -1,4 +1,4 @@
-/_
+/\_
 "@babel/core": "^7.12.10",
 "@babel/preset-env": "^7.12.10",
 "babel-loader": "^8.2.2",
@@ -21,4 +21,22 @@
 "webpack-dev-server": "^3.3.1",
 "webpack-merge": "^4.2.1",
 "webpackbar": "^5.0.0-3"
-_/
+
+"webpack": "^4.44.2",
+"webpack-cli": "^3.3.12",
+"webpack-dev-server": "^3.11.0",
+"webpack-merge": "^4.2.2",
+"url-loader": "^1.1.2",
+"style-loader": "^2.0.0",
+"file-loader": "^3.0.1",
+clean-webpack-plugin
+
+\_/
+
+webpack 5 zhong
+
+webpack-mage
+
+clean-webpack-plugin
+
+html-webpack-plugin 中的配置

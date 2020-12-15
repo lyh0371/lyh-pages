@@ -12,7 +12,7 @@ webpack(webpackConfig, (err, stats) => {
       chunkModules: false,
     }) + "\n\n"
   );
-
+  console.log(stats.hasErrors());
   if (stats.hasErrors()) {
     console.log(chalk.red("  Build failed with errors.\n"));
     process.exit(1);

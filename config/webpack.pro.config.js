@@ -1,18 +1,17 @@
 const base = require("./webpack.base.config");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const WebpackBar = require("webpackbar");
-function resove(dir) {
-  return path.join(__dirname, "..", "./src/pages", dir);
-}
+const { resoveDev } = require("./unit");
+
 const hwp = [
   new HtmlWebpackPlugin({
     filename: "index.html",
-    template: resove("/index/index.html"),
+    template: resoveDev("/index/index.html"),
     title: "首页",
     chunks: ["index", "common"],
     minify: {
@@ -24,12 +23,11 @@ const hwp = [
       //压缩html中的css
       minifyCSS: false,
     },
-    chunksSortMode: "dependency",
   }),
   //  template: path.join(__dirname, "../src/pages/user/user.html"),
   new HtmlWebpackPlugin({
     filename: "user.html",
-    template: resove("/user/user.html"),
+    template: resoveDev("/user/user.html"),
     title: "我的",
     chunks: ["user", "common"],
     minify: {
@@ -41,7 +39,6 @@ const hwp = [
       //压缩html中的css
       minifyCSS: false,
     },
-    chunksSortMode: "dependency",
   }),
 ];
 

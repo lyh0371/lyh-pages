@@ -1,8 +1,7 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-function resove(dir) {
-  return path.join(__dirname, "..", dir);
-}
+const { resove } = require("./unit");
+
 module.exports = {
   resolve: {
     alias: {
