@@ -43,3 +43,8 @@ webpack 支持
 ### `webpackbar`,`chalk`
 
 优化打包进度及更改打包后内容提示颜色
+
+## 交个朋友
+
+关注微信公众号码不停息,做前端正规军
+![](https://mmbiz.qpic.cn/mmbiz_jpg/a3Xykic19Nia5tzIEt6IlndTLzRwU7Zq3aiaRQia1J7pYHc0xzgibiaAIczC6W49LAfy1ia9CHaL7accvxByNWpPMrDxw/0?wx_fmt=jpeg)
