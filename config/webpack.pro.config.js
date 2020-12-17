@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const { resoveDev } = require("./unit");
-
+// 这个是写死的路由配置,后续会变成自动化
 const hwp = [
   new HtmlWebpackPlugin({
     filename: "index.html",
@@ -24,7 +24,6 @@ const hwp = [
       minifyCSS: false,
     },
   }),
-  //  template: path.join(__dirname, "../src/pages/user/user.html"),
   new HtmlWebpackPlugin({
     filename: "user.html",
     template: resoveDev("/user/user.html"),
@@ -64,15 +63,7 @@ const pro = {
           "less-loader",
         ],
       },
-      // {
-      //   test: /\.html$/,
-      //   use: [
-      //     {
-      //       loader: "html-loader",
-      //     },
-      //   ],
-      // },
-      // 处理css
+
       {
         test: /\.css$/,
         use: [
@@ -104,7 +95,9 @@ const pro = {
   },
   plugins: [
     ...hwp,
+    // dist 目录清理
     new CleanWebpackPlugin(),
+    // css 抽离
     new MiniCssExtractPlugin({
       filename: assetsPath("css/[name].[chunkhash].css"),
     }),
@@ -112,6 +105,7 @@ const pro = {
     new OptimizeCSSPlugin({
       cssProcessorOptions: { safe: true },
     }),
+    // 打包加载动画
     new WebpackBar(),
   ],
 };

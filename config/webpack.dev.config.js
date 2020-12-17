@@ -1,4 +1,3 @@
-const path = require("path");
 const base = require("./webpack.base.config");
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");

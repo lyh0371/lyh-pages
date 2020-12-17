@@ -8,6 +8,7 @@ module.exports = {
       "@": resove("src"),
     },
   },
+  // 打包入口,后续会写成自动化
   entry: {
     index: path.join(__dirname, "../src/pages/index/index.js"),
     user: path.join(__dirname, "../src/pages/user/user.js"),
