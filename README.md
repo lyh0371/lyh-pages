@@ -1,3 +1,14 @@
+## 使用
+
+```js
+npm install // 安装依赖
+
+npm run dev  // 开发环境
+
+npm run build  // 生产环境
+
+```
+
 ## 使用依赖介绍(后续持续更新)
 
 ### `@babel/core`,`@babel/preset-env`,`babel-loader`,`babel-plugin-dynamic-import-webpack`
@@ -47,4 +58,4 @@ webpack 支持
 ## 交个朋友
 
 关注微信公众号码不停息,做前端正规军
-![](https://mmbiz.qpic.cn/mmbiz_jpg/a3Xykic19Nia5tzIEt6IlndTLzRwU7Zq3aiaRQia1J7pYHc0xzgibiaAIczC6W49LAfy1ia9CHaL7accvxByNWpPMrDxw/0?wx_fmt=jpeg)
+![公众号码不停息]('https://github.com/lyh0371/lyh-pages/mbtx.jpg')

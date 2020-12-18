@@ -5,6 +5,9 @@ const config = require("./config");
 const portfinder = require("portfinder"); // 自动获取端口
 const { merge } = require("webpack-merge");
 const { resoveDev } = require("./unit");
+
+const nodePlugin = require("../nodePlugin");
+console.log("你好，我执行了一遍");
 const hwp = [
   new HtmlWebpackPlugin({
     filename: "index.html",
@@ -63,7 +66,7 @@ const dev = {
       },
     ],
   },
-  plugins: [...hwp],
+  plugins: [...hwp, new nodePlugin()],
 };
 const devWebpackConfig = merge(base, dev);
 
