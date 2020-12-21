@@ -1,10 +1,9 @@
 const base = require("./webpack.base.config");
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
-const config = require("./config");
+const config = require("../config");
 const portfinder = require("portfinder"); // 自动获取端口
 const { merge } = require("webpack-merge");
-const HTMLTEMP = require("./htmlWebpack");
-const nodePlugin = require("../nodePlugin");
+const HTMLTEMP = require("../config/htmlWebpack");
 
 const dev = {
   mode: "development",
@@ -31,7 +30,7 @@ const dev = {
       },
     ],
   },
-  plugins: [...HTMLTEMP, new nodePlugin()],
+  plugins: [...HTMLTEMP],
 };
 const devWebpackConfig = merge(base, dev);
 

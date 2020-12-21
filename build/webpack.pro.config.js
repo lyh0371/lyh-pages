@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const WebpackBar = require("webpackbar");
-const HTMLTEMP = require("./htmlWebpack");
+const HTMLTEMP = require("../config/htmlWebpack");
 // 这个是写死的路由配置,后续会变成自动化
 
 const pro = {
