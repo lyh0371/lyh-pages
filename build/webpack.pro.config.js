@@ -1,45 +1,12 @@
 const base = require("./webpack.base.config");
 const { merge } = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const WebpackBar = require("webpackbar");
-const { resoveDev } = require("./unit");
+const HTMLTEMP = require("../config/htmlWebpack");
 // 这个是写死的路由配置,后续会变成自动化
-const hwp = [
-  new HtmlWebpackPlugin({
-    filename: "index.html",
-    template: resoveDev("/index/index.html"),
-    title: "首页",
-    chunks: ["index", "common"],
-    minify: {
-      removeComments: false,
-      collapseWhitespace: false,
-      removeAttributeQuotes: false,
-      //压缩html中的js
-      minifyJS: false,
-      //压缩html中的css
-      minifyCSS: false,
-    },
-  }),
-  new HtmlWebpackPlugin({
-    filename: "user.html",
-    template: resoveDev("/user/user.html"),
-    title: "我的",
-    chunks: ["user", "common"],
-    minify: {
-      removeComments: false,
-      collapseWhitespace: false,
-      removeAttributeQuotes: false,
-      //压缩html中的js
-      minifyJS: false,
-      //压缩html中的css
-      minifyCSS: false,
-    },
-  }),
-];
 
 const pro = {
   mode: "production",
@@ -94,7 +61,7 @@ const pro = {
     },
   },
   plugins: [
-    ...hwp,
+    ...HTMLTEMP,
     // dist 目录清理
     new CleanWebpackPlugin(),
     // css 抽离
