@@ -1,31 +1,18 @@
-const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { resove } = require("./unit");
-
+const webpack = require("webpack");
 module.exports = {
   resolve: {
     alias: {
       "@": resove("src"),
     },
   },
-  // 打包入口,后续会写成自动化
-  entry: {
-    index: path.join(__dirname, "../src/pages/index/index.js"),
-    user: path.join(__dirname, "../src/pages/user/user.js"),
-  },
+
+  ...require("../config/entryTemplate"),
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
-        exclude: "/node_modules/",
-        use: {
-          loader: "babel-loader",
-          options: {
-            babelrc: false, // 不采用.babelrc的配置
-            plugins: ["dynamic-import-webpack"],
-            presets: ["@babel/preset-env"],
-          },
-        },
+        test: require.resolve("jquery"),
+        use: "expose-loader?$",
       },
       // 处理图片
       {
@@ -41,5 +28,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    }),
+  ],
 };

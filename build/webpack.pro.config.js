@@ -2,11 +2,15 @@ const base = require("./webpack.base.config");
 const { merge } = require("webpack-merge");
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 压缩 css
+const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin"); // 抽离css
 const WebpackBar = require("webpackbar");
-const HTMLTEMP = require("../config/htmlWebpack");
-// 这个是写死的路由配置,后续会变成自动化
+const HTMLTEMP = require("../config/routerTemplate");
+const glob = require("glob-all");
+const PurifyCss = require("purifycss-webpack");
+const HappyPack = require("happypack"); // 开启多线程
+const os = require("os");
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 const pro = {
   mode: "production",
@@ -18,6 +22,11 @@ const pro = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: "/node_modules/",
+        loader: "HappyPack/loader?id=js",
+      },
+      {
         test: /\.less$/,
         use: [
           {
@@ -26,11 +35,9 @@ const pro = {
               publicPath: "../../",
             },
           },
-          "css-loader",
           "less-loader",
         ],
       },
-
       {
         test: /\.css$/,
         use: [
@@ -38,15 +45,22 @@ const pro = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: "../../",
+              plugins: [require("autoprefixer")],
             },
           },
           "css-loader",
         ],
       },
+      {
+        test: /\.ext$/,
+        use: ["cache-loader", "babel-loader"],
+        include: path.resolve("src"),
+      },
     ],
   },
-  // 优化: 如果有3个文件同时应用同一个js文件,就吧这个js文件抽离出来
+
   optimization: {
+    // 优化: 如果有3个文件同时应用同一个js文件,就吧这个js文件抽离出来
     splitChunks: {
       cacheGroups: {
         common: {
@@ -71,6 +85,27 @@ const pro = {
     // 优化,压缩css资源
     new OptimizeCSSPlugin({
       cssProcessorOptions: { safe: true },
+    }),
+    // css tree-shaking
+    new PurifyCss({
+      paths: glob.sync([
+        path.resolve(__dirname, "./src*.html"),
+        path.resolve(__dirname, "./src/*.js"),
+      ]),
+    }),
+    // 开启多线程打包
+    new HappyPack({
+      id: "js",
+      loaders: [
+        {
+          loader: "babel-loader",
+          options: {
+            plugins: ["dynamic-import-webpack"],
+            cacheDirectory: true,
+          },
+        },
+      ],
+      threadPool: happyThreadPool,
     }),
     // 打包加载动画
     new WebpackBar(),

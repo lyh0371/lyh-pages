@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>首页</title>
+    <title>index</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= require('html-loader!../../assets/common/template/meta.html') %>
   </head>
   <body>
-    <%= require('html-loader!../common/header.html') %>
-
-    <img src=" <%= require('@/assets/images/mbtx.jpg' )%>" alt="" />
-    <p>你好我是首页1</p>
-    <div id="logos"></div>
+    <%= require('html-loader!../../assets/common/template/header.html') %>
+    <div id="index">我是index页面</div>
+    <%= require('html-loader!../../assets/common/template/footer.html') %>
   </body>
 </html>
+      

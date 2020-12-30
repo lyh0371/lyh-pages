@@ -55,9 +55,17 @@ webpack 支持
 
 优化打包进度及更改打包后内容提示颜色
 
-## `handlebars`
+### `handlebars`
 
 模板
+
+### purifycss-webpack purify-css
+
+css tree-shaking
+
+### happypack
+
+开启多进程,优化 webpack 构建速度
 
 ## 交个朋友
 

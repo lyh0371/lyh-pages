@@ -3,7 +3,9 @@ const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 const config = require("../config");
 const portfinder = require("portfinder"); // 自动获取端口
 const { merge } = require("webpack-merge");
-const HTMLTEMP = require("../config/htmlWebpack");
+const HTMLTEMP = require("../config/routerTemplate");
+const nodePlugin = require("../plugins/router-auto-plugin");
+const webpack = require("webpack");
 
 const dev = {
   mode: "development",
@@ -28,9 +30,19 @@ const dev = {
         test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
       },
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: "/node_modules/",
+        use: {
+          loader: "babel-loader",
+          options: {
+            plugins: ["dynamic-import-webpack"],
+          },
+        },
+      },
     ],
   },
-  plugins: [...HTMLTEMP],
+  plugins: [...HTMLTEMP, new nodePlugin()],
 };
 const devWebpackConfig = merge(base, dev);
 

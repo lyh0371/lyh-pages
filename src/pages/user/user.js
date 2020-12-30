@@ -1,3 +1,4 @@
+
 import "./user.less";
-import "../../assets/js/common.js";
-console.log("你好, 我是我的");
+import "../../assets/common/js/common.js";
+import "../../assets/common/less/common.less";
