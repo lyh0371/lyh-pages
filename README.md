@@ -1,12 +1,22 @@
 ## 使用
 
 ```js
+git clone  https://github.com/lyh0371/simple-vue-router
 npm install // 安装依赖
 
 npm run dev  // 开发环境
 
 npm run build  // 生产环境
 
+```
+
+使用命令行创建
+
+```js
+
+npm install lyhs-cli -g
+
+lyh create xxx
 ```
 
 ## 使用依赖介绍(后续持续更新)
