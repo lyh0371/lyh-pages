@@ -2,6 +2,7 @@
 
 ```js
 git clone  https://github.com/lyh0371/simple-vue-router
+
 npm install // 安装依赖
 
 npm run dev  // 开发环境
@@ -9,6 +10,15 @@ npm run dev  // 开发环境
 npm run build  // 生产环境
 
 ```
+
+## 文档
+
+[基于 webpack 打包多页应用,对前端工程化的思考(下)](https://juejin.cn/post/6911945908226080782)
+[基于 webpack 打包多页应用,对前端工程化的思考](https://juejin.cn/post/6907040632045305863)
+
+## 演示
+
+![演示](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dedb4bf2e7ca478d851d5c8a030f3892~tplv-k3u1fbpfcp-watermark.image)
 
 使用命令行创建
 
